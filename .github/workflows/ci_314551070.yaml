@@ -38,7 +38,7 @@ jobs:
         uses: mikepenz/action-junit-report@v6
         if: success() || failure()
         with:
-          report_paths: reports/junit.xml
+          report_paths: reports/vitest-junit.xml
           check_name: Vitest Test Report
           detailed_summary: true
           require_tests: true
