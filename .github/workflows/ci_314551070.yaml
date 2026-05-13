@@ -34,6 +34,16 @@ jobs:
           mkdir -p reports
           npm test -- --reporter=default --reporter=junit --outputFile.junit=reports/vitest-junit.xml
 
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure()
+        with:
+          report_paths: test-results/junit.xml
+          check_name: Vitest Test Report
+          detailed_summary: true
+          require_tests: true
+          fail_on_failure: true
+
       - name: Upload test report artifact
         if: always()
         uses: actions/upload-artifact@v4
